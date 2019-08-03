@@ -1,0 +1,40 @@
+a {
+  color: $--color-black;
+  transition: .2s;
+  &:hover {
+    color: $--color-accent;
+  }
+}
+
+input {
+  box-sizing: border-box;
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $--color-grey;
+  height: $--input-height;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  background: $--color-accent;
+  border: none;
+  color: $--color-white;
+  font-weight: 700;
+  height: $--input-height;
+  width: 100%;
+  cursor: pointer;
+  transition: all .5s;
+  &[disabled] {
+    opacity: .4;
+    pointer-events: none;
+  }
+  &:hover {
+    opacity: .7;
+  }
+}
+
+strong {
+  font-weight: 900;
+}

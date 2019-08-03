@@ -8,11 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "reset-css": "^4.0.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.10.0",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
