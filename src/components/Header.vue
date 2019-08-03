@@ -33,6 +33,9 @@ export default {
     padding: 16px;
     &__logo {
       width: 80px;
+      &:hover {
+        @extend %spin;
+      }
     }
     .nav {
       &__ul {

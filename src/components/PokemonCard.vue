@@ -53,12 +53,6 @@ export default {
     } catch (e) {
       throw new Error('Image not found')
     }
-  },
-
-  computed: {
-    borderColor () {
-      return this.backgroundColor
-    }
   }
 }
 </script>

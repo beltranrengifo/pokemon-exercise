@@ -41,7 +41,7 @@ export default {
       pokemons: [],
       pokemon: null,
       inputValue: '',
-      placeholderText: 'Pokemon name'
+      placeholderText: 'Search pokemons!'
     }
   },
 
@@ -89,6 +89,7 @@ export default {
         border-width: 3px;
         border-radius: 4px;
         height: 54px;
+        padding-top: 4px;
       }
     }
   }
