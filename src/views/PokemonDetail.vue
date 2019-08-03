@@ -25,7 +25,6 @@ export default {
     try {
       let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
       this.pokemon = res.data
-      console.log(this.pokemon)
     } catch (e) {
       throw new Error('Can not find that pokemon!')
     }

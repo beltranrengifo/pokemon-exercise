@@ -74,18 +74,20 @@ export default {
     align-items: center;
     flex-direction: column;
     opacity: 1;
-    transition: opacity .15s;
+    transition: opacity .25s;
     cursor: pointer;
 
     &:hover {
-      opacity: .8;
+      opacity: .9;
+      .pokemon-card__image {
+        box-shadow: 0px 0px 50px -1px rgba(0, 0, 0, 0.25);
+      }
     }
 
     &__name {
       font-size: 24px;
       text-transform: capitalize;
       text-shadow: 1px 1px 3px #FFFFFF;
-      font-weight: 900;
 
       small {
         font-size: 70%;
@@ -99,6 +101,8 @@ export default {
       width: 100px;
       height: 100px;
       border: 1px dotted;
+      box-shadow: 0px 0px 50px -1px rgba(255, 255, 255, 0.15);
+      transition: box-shadow .25s;
     }
   }
 </style>

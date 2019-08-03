@@ -8,6 +8,7 @@ import { undoKebabCase } from './filters'
 
 Vue.config.productionTip = false
 Vue.filter('undoKebabCase', undoKebabCase)
+
 new Vue({
   router,
   render: h => h(App)

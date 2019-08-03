@@ -53,7 +53,8 @@ export default {
     overflow-y: scroll;
 
     &__item {
-      line-height: 32px;
+      line-height: 36px;
+      padding-top: 6px;
       text-transform: capitalize;
       border-bottom: 1px dotted $--color-grey;
       cursor: pointer;

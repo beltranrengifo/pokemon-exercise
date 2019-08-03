@@ -42,6 +42,12 @@ export default {
       }
       &__li {
         padding: 0 12px;
+        a {
+          text-decoration: none;
+          &.router-link-exact-active {
+            color: $--color-accent;
+          }
+        }
       }
     }
   }

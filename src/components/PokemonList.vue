@@ -98,7 +98,7 @@ export default {
       $--value: 48px;
       height: $--value;
       width: $--value;
-      line-height: $--value;
+      line-height: $--value + 4;
       background: $--color-grey;;
       color: $--color-black;
       cursor: pointer;

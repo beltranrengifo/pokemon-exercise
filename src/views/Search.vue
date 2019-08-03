@@ -2,6 +2,7 @@
   <section class="search">
     <div class="search__input">
       <input
+        class="input__featured"
         type="text"
         :placeholder="placeholderText"
         v-model="inputValue"
@@ -47,7 +48,7 @@ export default {
   methods: {
     async getAllPokemons () {
       try {
-        let res = await axios.get(`http://pokeapi.co/api/v2/pokemon/?limit=964`)
+        let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=964`)
         this.pokemons = res.data.results
       } catch (e) {
         console.log(e)
@@ -84,6 +85,11 @@ export default {
       width: 340px;
       margin: 0 auto;
       position: relative;
+      .input__featured {
+        border-width: 3px;
+        border-radius: 4px;
+        height: 54px;
+      }
     }
   }
 </style>

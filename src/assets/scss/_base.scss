@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina&display=swap');
 a {
   color: $--color-black;
   transition: .2s;
@@ -37,6 +38,7 @@ button {
 
 strong {
   font-weight: 900;
+  font-size: 105%;
 }
 
 .capitalize {
