@@ -15,15 +15,15 @@
     <div class="more-buttons">
       <div class="more-buttons__button"
         @click="getPokemons(prevPage, -1)"
-        :class="{'disabled': !prevPage}">
+        :class="{'disabled': disabledButton || !prevPage}">
           <i class="fal fa-angle-double-left"/>
       </div>
       <div class="page-count">
-        <small>page {{pageCount}}</small>
+        <small>page {{pageCount}} of {{totalPages}}</small>
       </div>
       <div class="more-buttons__button"
         @click="getPokemons(nextPage, 1)"
-        :class="{'disabled': !nextPage}">
+        :class="{'disabled': disabledButton || !nextPage}">
           <i class="fal fa-angle-double-right"/>
       </div>
     </div>
@@ -48,12 +48,14 @@ export default {
       nextPage: '',
       pageCount: 1,
       errorText: 'Houston, we have a problem. We can\'t find any pokemons in the Universe!',
-      errorMessage: ''
+      errorMessage: '',
+      disabledButton: false
     }
   },
 
   methods: {
     async getPokemons (url, page) {
+      this.disabledButton = true
       try {
         let baseUrl = url || 'https://pokeapi.co/api/v2/pokemon'
         let res = await axios.get(baseUrl)
@@ -61,10 +63,17 @@ export default {
         this.nextPage = res.data.next
         this.prevPage = res.data.previous
         this.pageCount += page || 0
+        this.disabledButton = false
       } catch (e) {
         this.errorMessage = `${this.errorText}\n${e}`
         throw new Error(this.errorText)
       }
+    }
+  },
+
+  computed: {
+    totalPages () {
+      return Math.ceil(964 / 20)
     }
   },
 

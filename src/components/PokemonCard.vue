@@ -9,7 +9,11 @@
       <img :src="pokemonImg" :alt="name">
     </div>
     <h2
-      class="pokemon-card__name">{{ name }}</h2>
+      class="pokemon-card__name">
+      <small>#{{ pokemonId  }}</small>
+      <br>
+      {{ name }}
+    </h2>
   </router-link>
 </template>
 
@@ -32,7 +36,8 @@ export default {
   data () {
     return {
       backgroundColor: null,
-      pokemonImg: null
+      pokemonImg: null,
+      pokemonId: null
     }
   },
 
@@ -44,6 +49,7 @@ export default {
     try {
       let imageRequest = await axios.get(this.url)
       this.pokemonImg = imageRequest.data.sprites.front_default
+      this.pokemonId = imageRequest.data.id
     } catch (e) {
       throw new Error('Image not found')
     }
@@ -80,6 +86,10 @@ export default {
       text-transform: capitalize;
       text-shadow: 1px 1px 3px #FFFFFF;
       font-weight: 900;
+
+      small {
+        font-size: 70%;
+      }
     }
 
     &__image {
