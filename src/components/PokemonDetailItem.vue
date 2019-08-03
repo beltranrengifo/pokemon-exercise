@@ -91,6 +91,42 @@
           </p>
         </div>
       </article>
+      <article class="pokemon__info-box">
+        <div class="info-box__title">
+          <h2>Items</h2>
+        </div>
+        <div class="info-box__content">
+          <template v-if="pokemon.held_items.length">
+            <p
+              class="capitalize"
+              v-for="item in pokemon.held_items"
+              :key="item.item.name">
+              {{ item.item.name | undoKebabCase }}
+            </p>
+          </template>
+          <template v-else>
+            <p class="annotation">No items</p>
+          </template>
+        </div>
+      </article>
+      <article class="pokemon__info-box">
+        <div class="info-box__title">
+          <h2>Order</h2>
+        </div>
+        <div class="info-box__content">
+          <p>
+            <strong>{{pokemon.order}}</strong>
+          </p>
+        </div>
+        <div class="info-box__title info-box__title--margin">
+          <h2>Default</h2>
+        </div>
+        <div class="info-box__content">
+          <p>
+            <strong>{{isDefault}}</strong>
+          </p>
+        </div>
+      </article>
     </section>
   </section>
 </template>
@@ -102,6 +138,12 @@ export default {
   props: {
     pokemon: {
       type: Object
+    }
+  },
+
+  computed: {
+    isDefault () {
+      return this.pokemon.is_default ? 'Yes' : 'No'
     }
   }
 }
@@ -149,6 +191,9 @@ export default {
     padding-bottom: 8px;
     h2 {
       font-size: 20px;
+    }
+    &--margin {
+      margin-top: 24px;
     }
   }
   &__content {

@@ -44,3 +44,11 @@ strong {
 .capitalize {
   text-transform: capitalize;
 }
+
+.annotation {
+  color: $--color-dark-grey;
+  &:before,
+  &:after {
+    content: ' - '
+  }
+}
