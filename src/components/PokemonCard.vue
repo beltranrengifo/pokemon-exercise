@@ -1,9 +1,15 @@
 <template>
-  <router-link
-    tag="article"
-    class="pokemon-card"
-    :style="{'background-color': backgroundColor}"
-    :to="`/pokemon/${name}`">
+<router-link
+  tag="article"
+  class="pokemon-card"
+  :style="{'background-color': backgroundColor}"
+  :to="`/pokemon/${name}`">
+  <div
+    v-if="loading"
+    class="loading">
+    <poke-loading />
+  </div>
+  <template v-else>
     <div
       class="pokemon-card__image">
       <img :src="pokemonImg" :alt="name">
@@ -14,15 +20,21 @@
       <br>
       {{ name }}
     </h2>
-  </router-link>
+  </template>
+</router-link>
+
 </template>
 
 <script>
 
 import axios from 'axios'
-
+import Loading from '@/components/Loading'
 export default {
   name: 'PokemonCard',
+
+  components: {
+    PokeLoading: Loading
+  },
 
   props: {
     name: {
@@ -37,7 +49,8 @@ export default {
     return {
       backgroundColor: null,
       pokemonImg: null,
-      pokemonId: null
+      pokemonId: null,
+      loading: false
     }
   },
 
@@ -47,9 +60,12 @@ export default {
 
   async created () {
     try {
+      this.loading = true
       let imageRequest = await axios.get(this.url)
       this.pokemonImg = imageRequest.data.sprites.front_default
       this.pokemonId = imageRequest.data.id
+      this.loading = false
+      this.$emit('imagesLoaded')
     } catch (e) {
       throw new Error('Image not found')
     }

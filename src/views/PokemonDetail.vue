@@ -1,17 +1,25 @@
 <template>
-  <pokemon-detail-item
-    :pokemon="pokemon"/>
+  <div>
+    <pokemon-detail-item
+      v-if="pokemon"
+      :pokemon="pokemon"/>
+    <div v-else>
+      <poke-loading fullScreen/>
+    </div>
+  </div>
 </template>
 
 <script>
-
 import axios from 'axios'
 import PokemonDetailItem from '@/components/PokemonDetailItem'
+import Loading from '@/components/Loading'
+
 export default {
   name: 'PokemonDetail',
 
   components: {
-    PokemonDetailItem
+    PokemonDetailItem,
+    PokeLoading: Loading
   },
 
   data () {

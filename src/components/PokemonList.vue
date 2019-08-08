@@ -10,7 +10,8 @@
         v-for="pokemon in pokemons"
         :key="pokemon.name"
         :name="pokemon.name"
-        :url="pokemon.url"/>
+        :url="pokemon.url"
+        @imagesLoaded="handleDisableButtons"/>
     </ul>
     <div class="more-buttons">
       <div class="more-buttons__button"
@@ -49,7 +50,8 @@ export default {
       pageCount: 1,
       errorText: 'Houston, we have a problem. We can\'t find any pokemons in the Universe!',
       errorMessage: '',
-      disabledButton: false
+      disabledButton: false,
+      imagesCount: 0
     }
   },
 
@@ -63,10 +65,17 @@ export default {
         this.nextPage = res.data.next
         this.prevPage = res.data.previous
         this.pageCount += page || 0
-        this.disabledButton = false
       } catch (e) {
         this.errorMessage = `${this.errorText}\n${e}`
         throw new Error(this.errorText)
+      }
+    },
+
+    handleDisableButtons () {
+      this.imagesCount++
+      if (this.imagesCount >= 20) {
+        this.disabledButton = false
+        this.imagesCount = 0
       }
     }
   },
