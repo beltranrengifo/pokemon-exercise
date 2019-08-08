@@ -6,15 +6,12 @@
         type="text"
         :placeholder="placeholderText"
         v-model="inputValue"
-        @keyup.enter="getPokemon"
         ref="inputSearchPokemon">
         <search-results
           :items="pokemons"
           v-show="inputValue"
           :val="inputValue"
           @itemSelected="getPokemon"/>
-      <div class="search__button">
-      </div>
     </div>
     <div class="search__result">
       <pokemon-detail-item
